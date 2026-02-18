@@ -277,7 +277,7 @@ class Order(models.Model):
     order_id = models.CharField(max_length=50, unique=True, default=uuid.uuid4)
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='orders')
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='orders')
-    description = models.CharField(null=True, blank=True,max_length=90)
+    description = models.CharField(max_length=90,null=True, blank=True)
     # Order details
     link = models.URLField(max_length=500, help_text="Social media post/profile link")
     quantity = models.PositiveIntegerField()
