@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'reallysimplesocial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nwoemma$reallysimplesocial',
+        'USER': 'nwoemma',
+        'PASSWORD': 'Emmy77@@',
+        'HOST': 'nwoemma.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
