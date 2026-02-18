@@ -1,0 +1,564 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+
+<style>
+.services-header {
+  padding: 24px 0;
+  margin-bottom: 20px;
+}
+.service-id-badge {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.rate-value {
+  font-weight: 700;
+  color: #059669;
+}
+.star-icon {
+  color: #d1d5db;
+  transition: color 0.2s;
+}
+.star-icon:hover { color: #f59e0b; }
+.star-icon.favorited { color: #f59e0b; }
+.btn-view-desc {
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-view-desc:hover {
+  background: #f3f4f6;
+}
+.hidden-row { display: none !important; }
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  min-width: 120px;
+}
+.stat-card .val {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary, #6366f1);
+}
+.stat-card .lbl {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.modal-limits {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+}
+.modal-limit {
+  flex: 1;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+.modal-limit .lbl {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+.modal-limit .val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+</style>
+
+<!-- Page Header -->
+<div class="services-header">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between flex-wrap">
+      <div>
+        <h3 class="mb-0">Services</h3>
+        <p class="text-muted mb-0">Browse our full catalog of social media services</p>
+      </div>
+      <span class="badge badge-primary" style="font-size:14px; padding: 8px 16px;">
+        {{ total_services }} Services
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="block_101">
+  <div class="block-bg"></div>
+  <div class="container-fluid">
+    <div class="services-list">
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="val">{{ total_services }}</div>
+          <div class="lbl">Total Services</div>
+        </div>
+        <div class="stat-card">
+          <div class="val">{{ categories|length }}</div>
+          <div class="lbl">Categories</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="visible-count">{{ total_services }}</div>
+          <div class="lbl">Showing</div>
+        </div>
+      </div>
+
+      <!-- Filter & Search -->
+      <div class="row mb-3">
+        <div class="col">
+          <div class="component_filter_form_group component_filter_card component_platforms">
+            <div class="card">
+              <div class="row align-items-center">
+
+                <!-- Category Dropdown -->
+                <div class="col-md-auto mb-2 mb-md-0">
+                  <div class="dropdown">
+                    <a class="btn btn-big-primary dropdown-toggle" href="#" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="fal fa-filter mr-1"></span>
+                      <span id="active-category-label">All Categories</span>
+                    </a>
+                    <div class="dropdown-menu" 
+                         style="max-height: 350px; overflow-y: auto; min-width: 250px;">
+                      
+                      <a class="dropdown-item" href="#" data-filter-category-id="All">
+                        <i class="fas fa-th-large mr-1"></i> All Categories
+                      </a>
+                      <a class="dropdown-item" href="#" data-filter-category-id="favorites">
+                        <i class="fas fa-star text-warning mr-1"></i> Favorites
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      
+                      {% for category in categories %}
+                      <a class="dropdown-item" href="#" 
+                         data-filter-category-id="{{ category.id }}">
+                        {{ category.name }}
+                        <span class="badge badge-secondary float-right">
+                          {{ category.active_services|length }}
+                        </span>
+                      </a>
+                      {% endfor %}
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Search -->
+                <div class="col">
+                  <div class="input-group">
+                    <input type="text" 
+                           class="form-control" 
+                           id="service-search"
+                           placeholder="Search services by name or ID...">
+                    <div class="input-group-append">
+                      <button class="btn btn-big-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Table -->
+      <div class="row">
+        <div class="col">
+          <div class="services-list__table">
+            <div class="table-bg component_table">
+              <div class="table-wr table-responsive">
+                <table class="table" id="service-table-101">
+                  <thead>
+                    <tr>
+                      <th style="width: 42px"></th>
+                      <th>ID</th>
+                      <th class="nowrap">Service</th>
+                      <th class="nowrap">Rate per 1000</th>
+                      <th class="nowrap">Min order</th>
+                      <th class="nowrap">Max order</th>
+                      <th class="nowrap">Average time</th>
+                      <th>Description</th>
+                      <th>Order</th>
+                    </tr>
+                  </thead>
+                  <tbody id="service-tbody">
+
+                    {% for category in categories %}
+
+                    <!-- Category Header Row -->
+                    <tr class="services-list-category-title" 
+                        data-category-id="{{ category.id }}">
+                      <td colspan="9"
+                        class="style-bg-primary-alpha-20 style-text-primary services-category">
+                        <h4 class="mb-0">
+                          <span class="align-middle">{{ category.name }}</span>
+                          <small class="ml-2" style="font-weight:400; font-size:13px; opacity:0.7;">
+                            {{ category.active_services|length }} services
+                          </small>
+                        </h4>
+                      </td>
+                    </tr>
+
+                    <!-- Services in Category -->
+                    {% for service in category.active_services %}
+                    <tr data-category-id="{{ category.id }}"
+                        data-service-name="{{ service.name|lower }}"
+                        data-service-id="{{ service.id }}"
+                        data-is-favorite="false">
+
+                      <!-- Favorite Star -->
+                      <td>
+                        <a href="#" 
+                           class="star-icon-link"
+                           data-service-id="{{ service.id }}"
+                           onclick="toggleFavorite(this, {{ service.id }}); return false;">
+                          <i class="far fa-star star-icon" 
+                             id="star-{{ service.id }}"></i>
+                        </a>
+                      </td>
+
+                      <!-- Service ID -->
+                      <td>
+                        <span class="service-id-badge">{{ service.id }}</span>
+                      </td>
+
+                      <!-- Service Name -->
+                      <td class="table-service">
+                        {{ service.name }}
+                      </td>
+
+                      <!-- Rate -->
+                      <td>
+                        <span class="rate-value">
+                          ₦{{ service.price_per_1000|floatformat:2 }}
+                        </span>
+                      </td>
+
+                      <!-- Min Order -->
+                      <td>{{ service.minimum_order }}</td>
+
+                      <!-- Max Order -->
+                      <td>{{ service.maximum_order }}</td>
+
+                      <!-- Average Time -->
+                      <td class="nowrap">
+                        {{ service.average_time|default:"—" }}
+                      </td>
+
+                      <!-- Description -->
+                      <td>
+                        {% if service.description %}
+                        <button class="btn-view-desc" 
+                                onclick="showDescription(
+                                  '{{ service.id }}',
+                                  '{{ service.name|escapejs }}',
+                                  '{{ service.price_per_1000|floatformat:2 }}',
+                                  '{{ service.minimum_order }}',
+                                  '{{ service.maximum_order }}',
+                                  `{{ service.description|escapejs }}`
+                                )">
+                          View
+                        </button>
+                        {% else %}
+                        <span class="text-muted">—</span>
+                        {% endif %}
+                      </td>
+
+                      <!-- Quick Order -->
+                      <td>
+                        <a href="{% url 'pages:new-order' %}?service={{ service.id }}"
+                           class="btn btn-sm btn-primary">
+                          Order
+                        </a>
+                      </td>
+
+                    </tr>
+                    {% endfor %}
+
+                    {% empty %}
+                    <tr>
+                      <td colspan="9" class="text-center py-5">
+                        <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">No services available</p>
+                      </td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- No Results Row (hidden by default) -->
+                    <tr id="no-results-row" class="hidden-row">
+                      <td colspan="9" class="text-center py-5">
+                        <i class="fas fa-search fa-2x text-muted mb-3"></i>
+                        <p class="text-muted mb-0">No services found matching your search</p>
+                        <button class="btn btn-link" onclick="clearSearch()">Clear search</button>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Service Description Modal -->
+<div class="modal fade" id="service-description-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" type="button" data-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <h5 id="modal-service-name" class="mb-3"></h5>
+
+        <div class="mb-3">
+          <span class="text-muted" style="font-size:13px;">Rate per 1000</span>
+          <div id="modal-rate" style="font-size:24px; font-weight:700; color:#059669;"></div>
+        </div>
+
+        <div class="modal-limits">
+          <div class="modal-limit">
+            <div class="lbl">Min Order</div>
+            <div class="val" id="modal-min"></div>
+          </div>
+          <div class="modal-limit">
+            <div class="lbl">Max Order</div>
+            <div class="val" id="modal-max"></div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="mb-3">
+          <strong>Description</strong>
+          <div id="modal-description" class="mt-2 text-muted" style="font-size:14px; line-height:1.6;"></div>
+        </div>
+
+        <a href="#" 
+           id="modal-order-btn"
+           class="btn btn-block btn-big-primary">
+          <i class="fas fa-plus mr-1"></i> Create Order
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+
+<script type="text/javascript">
+  window.modules.layouts = {
+    "theme_id": 21,
+    "auth": 1,
+    "live": true,
+    "csrftoken": "{{ csrf_token }}"
+  };
+</script>
+<script type="text/javascript">
+  window.modules.user_app_show_config = [];
+</script>
+<script type="text/javascript">
+  window.modules.alerts = { "alerts": [] };
+</script>
+
+<script>
+  // ==================== FAVORITES ====================
+  const FAVORITES_KEY = 'favorite_services';
+  
+  function getFavorites() {
+    return JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+  }
+  
+  function saveFavorites(favorites) {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  }
+  
+  function toggleFavorite(el, serviceId) {
+    const favorites = getFavorites();
+    const star = document.getElementById('star-' + serviceId);
+    const idx = favorites.indexOf(serviceId);
+    const row = el.closest('tr');
+    
+    if (idx === -1) {
+      favorites.push(serviceId);
+      star.classList.remove('far');
+      star.classList.add('fas', 'favorited');
+      row.setAttribute('data-is-favorite', 'true');
+    } else {
+      favorites.splice(idx, 1);
+      star.classList.remove('fas', 'favorited');
+      star.classList.add('far');
+      row.setAttribute('data-is-favorite', 'false');
+    }
+    
+    saveFavorites(favorites);
+  }
+  
+  function initFavorites() {
+    const favorites = getFavorites();
+    favorites.forEach(function(id) {
+      const star = document.getElementById('star-' + id);
+      if (star) {
+        star.classList.remove('far');
+        star.classList.add('fas', 'favorited');
+        const row = star.closest('tr');
+        if (row) row.setAttribute('data-is-favorite', 'true');
+      }
+    });
+  }
+
+  // ==================== DESCRIPTION MODAL ====================
+  function showDescription(serviceId, name, rate, min, max, description) {
+    document.getElementById('modal-service-name').textContent = name;
+    document.getElementById('modal-rate').textContent = '₦' + rate;
+    document.getElementById('modal-min').textContent = min;
+    document.getElementById('modal-max').textContent = max;
+    document.getElementById('modal-description').textContent = description || 'No description available';
+    document.getElementById('modal-order-btn').href = 
+      '{% url "pages:new-order" %}?service=' + serviceId;
+    
+    $('#service-description-modal').modal('show');
+  }
+
+  // ==================== SEARCH ====================
+  function updateVisibleCount() {
+    const rows = document.querySelectorAll(
+      '#service-tbody tr:not(.services-list-category-title):not(#no-results-row)'
+    );
+    let visible = 0;
+    rows.forEach(function(row) {
+      if (!row.classList.contains('hidden-row')) visible++;
+    });
+    document.getElementById('visible-count').textContent = visible;
+    document.getElementById('no-results-row').classList.toggle('hidden-row', visible > 0);
+  }
+
+  function clearSearch() {
+    document.getElementById('service-search').value = '';
+    filterServices('', 'All');
+  }
+
+  let currentCategory = 'All';
+  let currentSearch = '';
+
+  function filterServices(search, category) {
+    currentSearch = search.toLowerCase();
+    if (category !== null) currentCategory = category;
+
+    const rows = document.querySelectorAll('#service-tbody tr');
+    
+    rows.forEach(function(row) {
+      if (row.classList.contains('services-list-category-title')) {
+        return; // Handle category rows separately
+      }
+      if (row.id === 'no-results-row') return;
+
+      const rowCategory = row.getAttribute('data-category-id');
+      const rowName = row.getAttribute('data-service-name') || '';
+      const rowId = row.getAttribute('data-service-id') || '';
+      const isFavorite = row.getAttribute('data-is-favorite') === 'true';
+
+      // Category filter
+      let categoryMatch = true;
+      if (currentCategory === 'All') {
+        categoryMatch = true;
+      } else if (currentCategory === 'favorites') {
+        categoryMatch = isFavorite;
+      } else {
+        categoryMatch = rowCategory === currentCategory;
+      }
+
+      // Search filter
+      const searchMatch = !currentSearch || 
+        rowName.includes(currentSearch) || 
+        rowId.includes(currentSearch);
+
+      row.classList.toggle('hidden-row', !(categoryMatch && searchMatch));
+    });
+
+    // Hide/show category headers
+    document.querySelectorAll('.services-list-category-title').forEach(function(header) {
+      const catId = header.getAttribute('data-category-id');
+      
+      if (currentCategory !== 'All' && currentCategory !== catId && currentCategory !== 'favorites') {
+        header.classList.add('hidden-row');
+        return;
+      }
+      
+      // Check if any service in this category is visible
+      const categoryRows = document.querySelectorAll(
+        `tr[data-category-id="${catId}"]:not(.services-list-category-title)`
+      );
+      let hasVisible = false;
+      categoryRows.forEach(function(r) {
+        if (!r.classList.contains('hidden-row')) hasVisible = true;
+      });
+      
+      header.classList.toggle('hidden-row', !hasVisible);
+    });
+
+    updateVisibleCount();
+  }
+
+  // ==================== INIT ====================
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Init favorites
+    initFavorites();
+
+    // Search input
+    const searchInput = document.getElementById('service-search');
+    searchInput.addEventListener('input', function() {
+      filterServices(this.value, null);
+    });
+
+    // Category filter
+    document.querySelectorAll('[data-filter-category-id]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const catId = this.getAttribute('data-filter-category-id');
+        const catName = this.textContent.trim();
+        
+        document.getElementById('active-category-label').textContent = catName;
+        filterServices(currentSearch, catId);
+      });
+    });
+
+    // Update initial count
+    updateVisibleCount();
+  });
+</script>
+{% endblock %}

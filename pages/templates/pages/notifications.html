@@ -1,0 +1,394 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block title %}Notification Settings{% endblock %}
+
+{% block content %}
+<!-- Block 180 - Account Header Totals -->
+<div id="block_180">
+  <div class="block-bg"></div>
+  <div class="container-fluid">
+    <div class="totals ">
+      <div class="row align-items-start justify-content-start">
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-bell"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">Notifications</h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Manage your notification preferences</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-envelope"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">{{ user.email|default:"user@example.com" }}</h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Email Address</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 297 - Account Navigation Tabs -->
+<div id="block_297">
+  <div class="block-bg"></div>
+  <div class="container">
+    <div class="text-block-2-columns ">
+      <div class="row">
+        <div class="col-12">
+          <div class="component_tabs account-card">
+            <div class="">
+              <ul class="nav nav-pills tab">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pages:account' %}">General</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'pages:notifications' %}">Notifications</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 116 - Notification Settings -->
+<div id="block_116">
+  <div class="block-bg"></div>
+  <div class="container-fluid">
+    <div class="orders-history ">
+      
+      <!-- Notification Settings Form -->
+      <div class="row">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <h3 class="mb-4">Email Notifications</h3>
+                  
+                  <form method="post" action="{% url 'pages:update_notifications' %}">
+                    {% csrf_token %}
+                    
+                    <!-- Global Email Notifications -->
+                    <div class="form-group mb-4">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="emailNotifications" 
+                               name="email_notifications"
+                               {% if user.email_notifications %}checked{% endif %}>
+                        <label class="custom-control-label" for="emailNotifications">
+                          <strong>Enable Email Notifications</strong>
+                        </label>
+                        <small class="form-text text-muted">
+                          Receive email notifications about your account activity
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <hr class="mb-4">
+                    
+                    <h4 class="mb-3">Notification Types</h4>
+                    
+                    <!-- Order Notifications -->
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="orderCompleted" 
+                               name="order_completed_notify"
+                               {% if user.order_completed_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="orderCompleted">
+                          Order Completed
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when your orders are completed
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="orderProcessing" 
+                               name="order_processing_notify"
+                               {% if user.order_processing_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="orderProcessing">
+                          Order Processing
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when your orders start processing
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="orderPartial" 
+                               name="order_partial_notify"
+                               {% if user.order_partial_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="orderPartial">
+                          Partially Completed Orders
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when orders are partially completed
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="orderCancelled" 
+                               name="order_cancelled_notify"
+                               {% if user.order_cancelled_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="orderCancelled">
+                          Cancelled Orders
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when orders are cancelled
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <hr class="mb-4">
+                    
+                    <!-- Account Notifications -->
+                    <h4 class="mb-3">Account Notifications</h4>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="depositSuccess" 
+                               name="deposit_success_notify"
+                               {% if user.deposit_success_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="depositSuccess">
+                          Successful Deposits
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when funds are added to your account
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="lowBalance" 
+                               name="low_balance_notify"
+                               {% if user.low_balance_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="lowBalance">
+                          Low Balance Warning
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when your balance is low
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="loginAlert" 
+                               name="login_alert_notify"
+                               {% if user.login_alert_notify %}checked{% endif %}>
+                        <label class="custom-control-label" for="loginAlert">
+                          New Login Alerts
+                        </label>
+                        <small class="form-text text-muted">
+                          Get notified when someone logs into your account
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <hr class="mb-4">
+                    
+                    <!-- Marketing Notifications -->
+                    <h4 class="mb-3">Marketing & Updates</h4>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="marketingEmails" 
+                               name="marketing_emails"
+                               {% if user.marketing_emails %}checked{% endif %}>
+                        <label class="custom-control-label" for="marketingEmails">
+                          Marketing Emails
+                        </label>
+                        <small class="form-text text-muted">
+                          Receive updates about new services and promotions
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" 
+                               class="custom-control-input" 
+                               id="newsletter" 
+                               name="newsletter"
+                               {% if user.newsletter %}checked{% endif %}>
+                        <label class="custom-control-label" for="newsletter">
+                          Newsletter
+                        </label>
+                        <small class="form-text text-muted">
+                          Receive our monthly newsletter with tips and updates
+                        </small>
+                      </div>
+                    </div>
+                    
+                    <!-- Save Button -->
+                    <div class="component_button_save mt-4">
+                      <button type="submit" class="btn btn-big-primary">
+                        <i class="fas fa-save"></i> Save Notification Settings
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Notification History (Optional) -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <h3 class="mb-4">Recent Notifications</h3>
+                  
+                  {% if notifications %}
+                    <div class="list-group">
+                      {% for notification in notifications %}
+                      <div class="list-group-item list-group-item-action {% if not notification.read %}list-group-item-info{% endif %}">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">{{ notification.title }}</h5>
+                          <small>{{ notification.created_at|timesince }} ago</small>
+                        </div>
+                        <p class="mb-1">{{ notification.message }}</p>
+                        {% if not notification.read %}
+                        <span class="badge badge-info">New</span>
+                        {% endif %}
+                      </div>
+                      {% endfor %}
+                    </div>
+                    
+                    {% if notifications.has_other_pages %}
+                    <nav class="mt-3">
+                      <ul class="pagination justify-content-center">
+                        {% if notifications.has_previous %}
+                        <li class="page-item">
+                          <a class="page-link" href="?page={{ notifications.previous_page_number }}">Previous</a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for i in notifications.paginator.page_range %}
+                        <li class="page-item {% if notifications.number == i %}active{% endif %}">
+                          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        {% if notifications.has_next %}
+                        <li class="page-item">
+                          <a class="page-link" href="?page={{ notifications.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                      </ul>
+                    </nav>
+                    {% endif %}
+                    
+                  {% else %}
+                    <div class="alert alert-info">
+                      <i class="fas fa-info-circle"></i> No notifications yet.
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<script type="text/javascript">
+  window.modules.layouts = {
+    "theme_id": 21,
+    "auth": 1,
+    "live": true,
+    "csrftoken": "{{ csrf_token }}"
+  };
+</script>
+<script type="text/javascript">
+  // Auto-save functionality (optional)
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.custom-control-input');
+    
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        // Optional: Show unsaved changes indicator
+        const saveBtn = document.querySelector('button[type="submit"]');
+        saveBtn.classList.add('btn-warning');
+        saveBtn.classList.remove('btn-big-primary');
+        saveBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Save Changes';
+      });
+    });
+  });
+</script>
+<script type="text/javascript">
+  window.modules.user_app_show_config = [];
+</script>
+<script type="text/javascript">
+  window.modules.alerts = { "alerts": [] };
+</script>
+{% endblock %}

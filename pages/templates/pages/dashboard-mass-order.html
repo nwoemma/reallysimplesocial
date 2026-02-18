@@ -1,0 +1,65 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block title %}Mass order{% endblock %}
+
+{% block content %}
+<!-- ==================== MESSAGES SECTION ==================== -->
+<div id="block_111">
+    <div class="block-bg"></div>
+    <div class="container">
+        <div class="new_order-block">
+            <div class="row mass-order__alignment">
+                <div class="col-lg-12">
+                    <div class="component_card">
+                        <div class="card">
+                            <form method="post" action="{% url 'pages:dashboard_mass_order' %}">
+                                {% csrf_token %}
+                                <div class="component_form_group">
+                                    <div class="">
+                                        <!-- Display messages if any -->
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label for="links" class="control-label">One order per line in format</label>
+                                            <textarea class="form-control" 
+                                                      name="MassOrderForm[orders]" 
+                                                      rows="15" 
+                                                      id="links" 
+                                                      placeholder="service_id | link | quantity">{{ request.POST.MassOrderForm_orders|default:'' }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+                                <div class="component_button_submit">
+                                    <div class="">
+                                        <button type="submit" class="btn btn-block btn-big-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<script type="text/javascript">
+    window.modules.layouts = {
+        "theme_id": 21,
+        "auth": 1,
+        "live": true,
+        "csrftoken": "{{ csrf_token }}"
+    };
+</script>
+<script type="text/javascript">
+    window.modules.user_app_show_config = [];
+</script>
+<script type="text/javascript">
+    window.modules.alerts = { "alerts": [] };
+</script>
+{% endblock %}

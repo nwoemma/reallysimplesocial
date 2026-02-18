@@ -1,0 +1,730 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="wrapper-content">
+      <div class="wrapper-content__header"></div>
+      <div class="wrapper-content__body">
+        {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>
+                    {% if message.tags == 'success' %}✅{% endif %}
+                    {% if message.tags == 'error' %}❌{% endif %}
+                    {% if message.tags == 'info' %}ℹ️{% endif %}
+                    {% if message.tags == 'warning' %}⚠️{% endif %}
+                </strong>
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- block_113 -->
+        <div id="block_113">
+          <div class="block-bg"></div>
+          <div class="block-divider-top">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M1280 0L640 70 0 0v140l640-70 640 70V0z" fill-opacity=".5" />
+                <path d="M1280 0H0l640 70 640-70z" />
+              </g>
+            </svg>
+          </div>
+          <div class="block-divider-bottom">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 47.44L170 0l626.48 94.89L1110 87.11l170-39.67V140H0V47.44z" fill-opacity=".5" />
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V140H0V90.72z" />
+              </g>
+            </svg>
+          </div>
+          <div class="container">
+            <div class="block-signin-text ">
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="block-signin-text__block-text">
+                    <div class="block-signin-text__block-text-title">
+                      <h1><span style="line-height: 14px"><span style="font-size: 50px">world fastest and cheapest smm panel</span></span></h1>
+                    </div>
+                    <div class="block-signin-text__block-text-description">
+                      <p><span style="font-size: 20px">Get likes, follows, views and everything else you need from the best SMM panel.&nbsp;</span></p>
+                      <p><span style="font-size: 20px">All at super affordable prices.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="component_card">
+                    <div class="card">
+                      <form method="post" action="/">
+                        {% csrf_token %}
+                        <div>
+                          <div class="component_form_group">
+                            <div class="">
+                              <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" name="username" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="component_form_group">
+                            <div class="">
+                              <div class="form-group">
+                                <label>Password</label>
+                                <div class="position-relative">
+                                  <input type="password" name="password" class="form-control">
+                                  <div class="sign-in__forgot h-100 d-flex align-items-center">
+                                    <a href="{% url 'users:reset_password' %}">Forgot password?</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="component_button_submit">
+                              <div class="">
+                                <button class="btn btn-block btn-big-primary" type="submit">Sign in</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="hidden" name="_csrf" value="OZ-QzUTCXQKTAyupT99wJb_IRkMtaROzvCbgdI4k_ih37fSePPQcbt42Zds-piNx-vwVFX8TdPvabdMs7XGWTg==">
+                        <div class="text-center d-flex justify-content-center">
+                          <div>Do not have an account?</div>
+                          <a href="/signup" class="block-signin-text__sign-up-link">Sign up</a>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_161 -->
+        <div id="block_161">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="header-with-text ">
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block__title">
+                    <h2><span style="font-size: 38px"><span style="color: var(--color-id-186)">the best SMM panel</span></span></h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block__description">
+                    <p><span style="font-size: 18px"><span style="color: var(--color-id-186)">Really Simple Social is a top SMM provider.</span></span></p>
+                    <p><span style="font-size: 18px"><span style="color: var(--color-id-186)">Get all you need to automatically grow your social media pages.</span></span></p>
+                    <p><br></p>
+                    <p><span style="font-size: 18px"><span style="color: var(--color-id-186)">We're a top SMM panel for Instagram, TikTok, Twitter and YouTube engagement from targetted, genuine audiences.</span></span></p>
+                    <p><br></p>
+                    <p><br></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_162 -->
+        <div id="block_162">
+          <div class="block-bg"></div>
+          <div class="block-divider-top">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V0H0v90.72z" fill-opacity=".5" />
+                <path d="M0 0v47.44L170 0l626.48 94.89L1110 87.11l170-39.67V0H0z" />
+              </g>
+            </svg>
+          </div>
+          <div class="container">
+            <div class="features-block-icons ">
+              <div class="row align-items-start justify-content-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card features-block__card h-100" style="background: none; color: inherit; padding-left: 24px; padding-right: 24px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198);">
+                    <div class="features-block__header">
+                      <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px; height: 96px; font-size: 96px; background: none;">
+                        <span class="feature-block__icon fab fa-instagram-square" style="transform: rotate(0deg); color: var(--color-id-232); text-shadow: none; border-radius: 0px; background: none; padding: 10px;"></span>
+                      </div>
+                      <div class="features-block__header-title" style="margin-bottom: 10px; padding-left: 0px; padding-right: 0px;">
+                        <h3 class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">Instagram SMM services&nbsp;</strong></span></h3>
+                      </div>
+                    </div>
+                    <div class="features-block__body">
+                      <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p class="text-justify"><span style="text-align: JUSTIFY">Engagement, likes and follows to boost your Istagram profile</span></p>
+                        <p class="text-justify"><br></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Real followers</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Targetted engagement</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card features-block__card h-100" style="background: none; color: inherit; padding-left: 40px; box-shadow: none;">
+                    <div class="features-block__header">
+                      <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px; height: 96px; font-size: 96px; background: none;">
+                        <span class="feature-block__icon fab fa-twitter" style="transform: rotate(0deg); color: var(--color-id-233); text-shadow: none; border-radius: 0px; background: none; padding: 10px;"></span>
+                      </div>
+                      <div class="features-block__header-title" style="margin-bottom: 10px; padding-left: 0px; padding-right: 0px;">
+                        <h3 class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">Twitter SMM services</strong></span></h3>
+                      </div>
+                    </div>
+                    <div class="features-block__body">
+                      <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p class="text-justify"><span style="text-align: JUSTIFY">Relaible, non-bot Twitter likes, retweets, and follows</span></p>
+                        <p class="text-justify"><br></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Targetted audience</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Real engagement</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_163 -->
+        <div id="block_163">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="features-block-icons ">
+              <div class="row align-items-start justify-content-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card features-block__card h-100" style="background: none; color: inherit; padding-left: 40px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198);">
+                    <div class="features-block__header">
+                      <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px; height: 96px; font-size: 96px; background: none;">
+                        <span class="feature-block__icon fab fa-facebook-square" style="transform: rotate(0deg); color: var(--color-id-234); text-shadow: none; border-radius: 0px; background: none; padding: 10px;"></span>
+                      </div>
+                      <div class="features-block__header-title" style="margin-bottom: 10px; padding-left: 0px; padding-right: 0px;">
+                        <h3 class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">Facebook SMM services&nbsp;</strong></span></h3>
+                      </div>
+                    </div>
+                    <div class="features-block__body">
+                      <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p class="text-justify"><span style="text-align: JUSTIFY">Engage with top quality Facebook accounts from multiple real audiences&nbsp;</span></p>
+                        <p class="text-justify"><br></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Real likes&nbsp;</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Real comments</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card features-block__card h-100" style="background: none; color: inherit; padding-left: 40px; box-shadow: none;">
+                    <div class="features-block__header">
+                      <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px; height: 96px; font-size: 96px; background: none;">
+                        <span class="feature-block__icon fab fa-youtube" style="transform: rotate(0deg); color: var(--color-id-235); text-shadow: none; border-radius: 0px; background: none; padding: 0px;"></span>
+                      </div>
+                      <div class="features-block__header-title" style="margin-bottom: 10px; padding-left: 0px; padding-right: 0px;">
+                        <h3 class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">Youtube SMM services</strong></span></h3>
+                      </div>
+                    </div>
+                    <div class="features-block__body">
+                      <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p class="text-justify"><span style="text-align: JUSTIFY">Grow your YouTube channel safely with organic targetted traffic</span></p>
+                        <p class="text-justify"><br></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Real views</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Non-bot comments</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Genuine new followers</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card features-block__card h-100" style="background: none; color: inherit; padding-left: 40px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198);">
+                    <div class="features-block__header">
+                      <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px; height: 96px; font-size: 96px; background: none;">
+                        <span class="feature-block__icon fab fa-tiktok" style="transform: rotate(0deg); color: var(--color-id-197); text-shadow: none; border-radius: 0px; background: none; padding: 10px;"></span>
+                      </div>
+                      <div class="features-block__header-title" style="margin-bottom: 10px; padding-left: 0px; padding-right: 0px;">
+                        <h3 class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">Tik-Tok SMM services</strong></span></h3>
+                      </div>
+                    </div>
+                    <div class="features-block__body">
+                      <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p class="text-justify"><span style="text-align: JUSTIFY">Super easy TikTok profile boost service</span></p>
+                        <p class="text-justify"><br></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ New followers</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Organic views</span></p>
+                        <p class="text-justify"><span style="text-align: JUSTIFY">✔ Organic likes</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_165 -->
+        <div id="block_165">
+          <div class="block-bg">
+            <div class="bg-image"></div>
+          </div>
+          <div class="block-divider-bottom">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 47.44L170 0l626.48 94.89L1110 87.11l170-39.67V140H0V47.44z" fill-opacity=".5" />
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V140H0V90.72z" />
+              </g>
+            </svg>
+          </div>
+          <div class="container">
+            <div class="text-block-with-image ">
+              <div class="row">
+                <div class="col">
+                  <div class="d-md-flex align-items-start">
+                    <div class="text-block__description">
+                      <h2 class="text-left"><span style="font-size: 50px"><span style="text-align: LEFT"><u style="text-decoration: underline">Tried and teste</u></span></span><span style="font-size: 50px"><u style="text-decoration: underline">d smm panel</u></span></h2>
+                      <h2><br></h2>
+                      <p class="text-left"><span style="color: var(--color-id-200)"><span style="font-size: 40px"><span style="text-align: LEFT"><u style="text-decoration: underline">Over 2300 brands and social media users rely on our SMM panel to drive value-creating engagement</u></span></span></span></p>
+                      <p><br></p>
+                      <p><br></p>
+                    </div>
+                    <div class="text-block__image">
+                      <img src="https://storage.perfectcdn.com/9z8eus/z85tsmsotbeji753.png" alt="" title="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_166 -->
+        <div id="block_166">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="text-block-with-button ">
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block-with-button__description">
+                    <h2 class="text-center"><span style="color: var(--color-id-186)"><span style="text-align: CENTER">Use our custom made social media marketing services to quickly and efficiently boost </span></span><span style="color: var(--color-id-186)">the growth of your social media accounts.</span></h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block-with-button__button component_button_link">
+                    <div class="">
+                      <a class="btn btn-big-primary" target="_self" href="#">
+                        <p>Get started</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_114 -->
+        <div id="block_114">
+          <div class="block-bg"></div>
+          <div class="block-divider-top">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V0H0v90.72z" fill-opacity=".5" />
+                <path d="M0 0v47.44L170 0l626.48 94.89L1110 87.11l170-39.67V0H0z" />
+              </g>
+            </svg>
+          </div>
+          <div class="block-divider-bottom">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 47.44L170 0l626.48 94.89L1110 87.11l170-39.67V140H0V47.44z" fill-opacity=".5" />
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V140H0V90.72z" />
+              </g>
+            </svg>
+          </div>
+          <div class="container-fluid">
+            <div class="how-it-works ">
+              <div class="row how-it-works-row justify-content-center">
+                <div class="col-md-3 how-it-works-col">
+                  <div class="card how-it-works-card" style="background: none; color: inherit; box-shadow: none;">
+                    <div class="how-it-works-arrow-top style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-942.000000, -1387.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M889.516523,26.5080119 L891.910644,20.9496585 L902,32.9164837 L886.372927,33.807873 L888.723185,28.3469617 C871.347087,21.9210849 854.507984,19.7125409 838.195168,21.7129851 C818.169006,24.1687976 798.907256,32.9719131 780.398868,48.1424468 L779.638673,48.7694781 L778.869195,49.4081513 L777.591849,47.8691952 L778.361327,47.2305219 C797.38492,31.4407805 817.252224,22.2662407 837.951732,19.7278557 C854.622929,17.6834632 871.814783,19.9463129 889.516523,26.5080119 Z" id="Line3"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="how-it-works-arrow-bottom style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-657.000000, -1461.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M493.869195,93.5918487 L494.638673,94.2305219 C513.37968,109.785715 532.894675,118.797561 553.195168,121.287015 C569.507984,123.287459 586.347087,121.078915 603.723185,114.653038 L601.372927,109.192127 L617,110.083516 L606.910644,122.050341 L604.516523,116.491988 C586.814783,123.053687 569.622929,125.316537 552.951732,123.272144 C532.528218,120.767604 512.914862,111.802694 494.12272,96.3975396 L493.361327,95.7694781 L492.591849,95.1308048 L493.869195,93.5918487 Z" id="Line2"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="d-flex justify-content-center how-it-works-preview">
+                      <div class="how-it-works-number style-box-shadow-default style-bg-light style-border-radius-50 style-card-number" style="width: 80px; height: 80px; background: var(--color-id-194); border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; font-size: 24px; color: var(--color-id-186);">1</div>
+                    </div>
+                    <div class="how-it-works-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">1. Sign up and log in</strong></span></p>
+                    </div>
+                    <div class="how-it-works-description" style="padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER">You need to sign up and log in to your account.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 how-it-works-col">
+                  <div class="card how-it-works-card" style="background: none; color: inherit; box-shadow: none;">
+                    <div class="how-it-works-arrow-top style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-942.000000, -1387.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M889.516523,26.5080119 L891.910644,20.9496585 L902,32.9164837 L886.372927,33.807873 L888.723185,28.3469617 C871.347087,21.9210849 854.507984,19.7125409 838.195168,21.7129851 C818.169006,24.1687976 798.907256,32.9719131 780.398868,48.1424468 L779.638673,48.7694781 L778.869195,49.4081513 L777.591849,47.8691952 L778.361327,47.2305219 C797.38492,31.4407805 817.252224,22.2662407 837.951732,19.7278557 C854.622929,17.6834632 871.814783,19.9463129 889.516523,26.5080119 Z" id="Line3"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="how-it-works-arrow-bottom style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-657.000000, -1461.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M493.869195,93.5918487 L494.638673,94.2305219 C513.37968,109.785715 532.894675,118.797561 553.195168,121.287015 C569.507984,123.287459 586.347087,121.078915 603.723185,114.653038 L601.372927,109.192127 L617,110.083516 L606.910644,122.050341 L604.516523,116.491988 C586.814783,123.053687 569.622929,125.316537 552.951732,123.272144 C532.528218,120.767604 512.914862,111.802694 494.12272,96.3975396 L493.361327,95.7694781 L492.591849,95.1308048 L493.869195,93.5918487 Z" id="Line2"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="d-flex justify-content-center how-it-works-preview">
+                      <div class="how-it-works-number style-box-shadow-default style-bg-light style-border-radius-50 style-card-number" style="width: 80px; height: 80px; background: var(--color-id-194); border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; font-size: 24px; color: var(--color-id-186);">2</div>
+                    </div>
+                    <div class="how-it-works-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">2. Deposit funds</strong></span></p>
+                    </div>
+                    <div class="how-it-works-description" style="padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER">Add funds to your account using a suitable payment option.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 how-it-works-col">
+                  <div class="card how-it-works-card" style="background: none; color: inherit; box-shadow: none;">
+                    <div class="how-it-works-arrow-top style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-942.000000, -1387.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M889.516523,26.5080119 L891.910644,20.9496585 L902,32.9164837 L886.372927,33.807873 L888.723185,28.3469617 C871.347087,21.9210849 854.507984,19.7125409 838.195168,21.7129851 C818.169006,24.1687976 798.907256,32.9719131 780.398868,48.1424468 L779.638673,48.7694781 L778.869195,49.4081513 L777.591849,47.8691952 L778.361327,47.2305219 C797.38492,31.4407805 817.252224,22.2662407 837.951732,19.7278557 C854.622929,17.6834632 871.814783,19.9463129 889.516523,26.5080119 Z" id="Line3"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="how-it-works-arrow-bottom style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-657.000000, -1461.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M493.869195,93.5918487 L494.638673,94.2305219 C513.37968,109.785715 532.894675,118.797561 553.195168,121.287015 C569.507984,123.287459 586.347087,121.078915 603.723185,114.653038 L601.372927,109.192127 L617,110.083516 L606.910644,122.050341 L604.516523,116.491988 C586.814783,123.053687 569.622929,125.316537 552.951732,123.272144 C532.528218,120.767604 512.914862,111.802694 494.12272,96.3975396 L493.361327,95.7694781 L492.591849,95.1308048 L493.869195,93.5918487 Z" id="Line2"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="d-flex justify-content-center how-it-works-preview">
+                      <div class="how-it-works-number style-box-shadow-default style-bg-light style-border-radius-50 style-card-number" style="width: 80px; height: 80px; background: var(--color-id-194); border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; font-size: 24px; color: var(--color-id-186);">3</div>
+                    </div>
+                    <div class="how-it-works-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">3. Place an order</strong></span></p>
+                    </div>
+                    <div class="how-it-works-description" style="padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER">Place your orders to help your business become more popular.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 how-it-works-col">
+                  <div class="card how-it-works-card" style="background: none; color: inherit; box-shadow: none;">
+                    <div class="how-it-works-arrow-top style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-942.000000, -1387.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M889.516523,26.5080119 L891.910644,20.9496585 L902,32.9164837 L886.372927,33.807873 L888.723185,28.3469617 C871.347087,21.9210849 854.507984,19.7125409 838.195168,21.7129851 C818.169006,24.1687976 798.907256,32.9719131 780.398868,48.1424468 L779.638673,48.7694781 L778.869195,49.4081513 L777.591849,47.8691952 L778.361327,47.2305219 C797.38492,31.4407805 817.252224,22.2662407 837.951732,19.7278557 C854.622929,17.6834632 871.814783,19.9463129 889.516523,26.5080119 Z" id="Line3"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="how-it-works-arrow-bottom style-svg-g-primary">
+                      <svg width="125px" height="31px" viewBox="0 0 125 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-657.000000, -1461.000000)" fill="#1E79E4" id="Group-10">
+                            <g transform="translate(165.000000, 1368.000000)">
+                              <path d="M493.869195,93.5918487 L494.638673,94.2305219 C513.37968,109.785715 532.894675,118.797561 553.195168,121.287015 C569.507984,123.287459 586.347087,121.078915 603.723185,114.653038 L601.372927,109.192127 L617,110.083516 L606.910644,122.050341 L604.516523,116.491988 C586.814783,123.053687 569.622929,125.316537 552.951732,123.272144 C532.528218,120.767604 512.914862,111.802694 494.12272,96.3975396 L493.361327,95.7694781 L492.591849,95.1308048 L493.869195,93.5918487 Z" id="Line2"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="d-flex justify-content-center how-it-works-preview">
+                      <div class="how-it-works-number style-box-shadow-default style-bg-light style-border-radius-50 style-card-number" style="width: 80px; height: 80px; background: var(--color-id-194); border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; font-size: 24px; color: var(--color-id-186);">4</div>
+                    </div>
+                    <div class="how-it-works-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER"><strong style="font-weight: bold">4. Fast results</strong></span></p>
+                    </div>
+                    <div class="how-it-works-description" style="padding-left: 0px; padding-right: 0x;">
+                      <p class="text-center"><span style="text-align: CENTER">We'll inform you as soon as your order is complete. Enjoy amazing results!</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_120 -->
+        <div id="block_120">
+          <div class="block-bg"></div>
+          <div class="block-divider-bottom">
+            <svg width="100%" height="100%" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor">
+                <path d="M0 47.44L170 0l626.48 94.89L1110 87.11l170-39.67V140H0V47.44z" fill-opacity=".5" />
+                <path d="M0 90.72l140-28.28 315.52 24.14L796.48 65.8 1140 104.89l140-14.17V140H0V90.72z" />
+              </g>
+            </svg>
+          </div>
+          <div class="container">
+            <div class="reviews-slider ">
+              <div class="reviews-slider">
+                <div data-slider="1" data-slider-options="{'dots':true,'infinite':true,'speed':500,'autoplay':true,'autoplaySpeed':5000,'slidesToShow':2,'slidesToScroll':1,'responsive':[{'breakpoint':991,'settings':{'slidesToShow':1,'slidesToScroll':1}}],'rtl':false}">
+                  <div class="reviews-slider__slide">
+                    <div class="card" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                      <div class="reviews-slider__slide-photo" style="margin-bottom: 16px; justify-content: flex-start;">
+                        <div class="reviews-slider__slide-avatar" style="background-image: url(https://storage.perfectcdn.com/9z8eus/i8enx4rugq03sunc.png);"></div>
+                      </div>
+                      <div class="reviews-slider__slide-name" style="padding-left: 0px; padding-right: 0px; margin-bottom: 10px;">
+                        <p><strong style="font-weight: bold">Peter</strong></p>
+                      </div>
+                      <div class="reviews-slider__slide-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p>No other social media panel comes close. trust I've tried many.&nbsp;</p>
+                        <p>My number one guys for Instagram followers. Never dissapoint</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-slider__slide">
+                    <div class="card">
+                      <div class="reviews-slider__slide-photo" style="margin-bottom: 16px; justify-content: flex-start;">
+                        <div class="reviews-slider__slide-avatar" style="background-image: url(https://storage.perfectcdn.com/9z8eus/7swhpnrjb7semp69.png);"></div>
+                      </div>
+                      <div class="reviews-slider__slide-name" style="padding-left: 0px; padding-right: 0px; margin-bottom: 8px;">
+                        <p><strong style="font-weight: bold">Ibro</strong></p>
+                      </div>
+                      <div class="reviews-slider__slide-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p>They do thier best to get folowers you want. I recommend them&nbsp;</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reviews-slider__slide">
+                    <div class="card" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                      <div class="reviews-slider__slide-photo" style="margin-bottom: 10px; justify-content: flex-start;">
+                        <div class="reviews-slider__slide-avatar" style="background-image: url(https://storage.perfectcdn.com/9z8eus/ibpxpmsud1sqpn5s.png);"></div>
+                      </div>
+                      <div class="reviews-slider__slide-name" style="padding-left: 0px; padding-right: 0px; margin-bottom: 8px;">
+                        <p><strong style="font-weight: bold">Samuel</strong></p>
+                      </div>
+                      <div class="reviews-slider__slide-description" style="padding-left: 0px; padding-right: 0px;">
+                        <p>Support was extremely quick and super accomodating in helping me get the exact SMM services I wanted. Highly recommended</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_98 -->
+        <div id="block_98">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="header-with-text ">
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block__title">
+                    <h2 class="text-center">Frequently asked questions</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-block__description">
+                    <p class="text-center">Your enquiries answered</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_125 -->
+        <div id="block_125">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="faq ">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="faq-block__card">
+                        <div class="card">
+                          <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-125-1" aria-expanded="false" aria-controls="#faq-block-125-1">
+                            <div class="faq-block__header-title">
+                              <h4>What is an SMM panel?</h4>
+                            </div>
+                            <div class="faq-block__header-icon">
+                              <div class="style-text-dark faq-block__icon" style="color: var(--color-id-184);"></div>
+                            </div>
+                          </div>
+                          <div class="faq-block__body collapse" id="faq-block-125-1">
+                            <div class="faq-block__body-description" style="padding-top: 8px">
+                              <p>SMM panels are online stores where people are able to purchase cheap SMM services.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="faq-block__card">
+                        <div class="card">
+                          <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-125-2" aria-expanded="false" aria-controls="#faq-block-125-2">
+                            <div class="faq-block__header-title">
+                              <h4>What SMM services can I buy on your panel?</h4>
+                            </div>
+                            <div class="faq-block__header-icon">
+                              <div class="style-text-dark faq-block__icon" style="color: var(--color-id-184);"></div>
+                            </div>
+                          </div>
+                          <div class="faq-block__body collapse" id="faq-block-125-2">
+                            <div class="faq-block__body-description" style="padding-top: 8px">
+                              <p>Our panel provides different types of SMM services, such as followers, views, likes and more.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="faq-block__card">
+                        <div class="card">
+                          <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-125-3" aria-expanded="false" aria-controls="#faq-block-125-3">
+                            <div class="faq-block__header-title">
+                              <h4>Are SMM services offered here safe to order?</h4>
+                            </div>
+                            <div class="faq-block__header-icon">
+                              <div class="style-text-dark faq-block__icon" style="color: var(--color-id-184);"></div>
+                            </div>
+                          </div>
+                          <div class="faq-block__body collapse" id="faq-block-125-3">
+                            <div class="faq-block__body-description" style="padding-top: 8px">
+                              <p>Using our SMM services is 100% safe, our panel is secure and we offer high-quality services.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="faq-block__card">
+                        <div class="card">
+                          <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-125-4" aria-expanded="false" aria-controls="#faq-block-125-4">
+                            <div class="faq-block__header-title">
+                              <h4>A mass order — what is it?</h4>
+                            </div>
+                            <div class="faq-block__header-icon">
+                              <div class="style-text-dark faq-block__icon" style="color: var(--color-id-184);"></div>
+                            </div>
+                          </div>
+                          <div class="faq-block__body collapse" id="faq-block-125-4">
+                            <div class="faq-block__body-description" style="padding-top: 8px">
+                              <p>A mass order allows placing multiple orders at once.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="faq-block__card">
+                        <div class="card">
+                          <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-125-5" aria-expanded="false" aria-controls="#faq-block-125-5">
+                            <div class="faq-block__header-title">
+                              <h4>What is the purpose of Drip-feed?</h4>
+                            </div>
+                            <div class="faq-block__header-icon">
+                              <div class="style-text-dark faq-block__icon" style="color: var(--color-id-184);"></div>
+                            </div>
+                          </div>
+                          <div class="faq-block__body collapse" id="faq-block-125-5">
+                            <div class="faq-block__body-description" style="padding-top: 8px">
+                              <p>The engagement on the chosen account can be built gradually, and Drip-feed will help you with that. For example, if you want 2000 likes on your Instagram post, you can divide them into parts for a seamless effect: as an option, you can get 200 likes/day for 10 days.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- block_167 -->
+        <div id="block_167">
+          <div class="block-bg"></div>
+          <div class="container">
+            <div class="text-block-2-columns-card ">
+              <div class="row">
+                <div class="col-lg-6 text-block-2-columns-col">
+                  <div class="component_card_1">
+                    <div class="card">
+                      <div class="text-block__description">
+                        <h2><span style="color: var(--color-id-186)">Company</span></h2>
+                        <p><a target="_self" href="/blog"><span style="color: var(--color-id-186)">Blog</span></a></p>
+                        <p><a target="_self" href="https://reallysimplesocial.com/refund-policy"><span style="color: var(--color-id-186)">Refund policy</span></a></p>
+                        <p><a target="_self" href="https://reallysimplesocial.com/contact-us"><span style="color: var(--color-id-186)">Contact Us</span></a></p>
+                        <p><a target="_self" href="https://reallysimplesocial.com/privacy-policy"><span style="color: var(--color-id-186)">Privacy policy</span></a></p>
+                        <p><a target="_self" href="/terms"><span style="color: var(--color-id-186)">Terms and conditions</span></a></p>
+                        <p><span style="color: var(--color-id-186)">Email Us | reallysimplesociallive@gmail.com</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 text-block-2-columns-col">
+                  <div class="component_card_2">
+                    <div class="card">
+                      <div class="text-block__description">
+                        <h2><span style="color: var(--color-id-186)">Quick links&nbsp;</span></h2>
+                        <p><a target="_self" href="https://reallysimplesocial.com/instagram-followers"><span style="color: var(--color-id-186)">Get Instagram followers and likes</span></a></p>
+                        <p><span style="color: var(--color-id-186)">Get Twitter followers and likes</span></p>
+                        <p><span style="color: var(--color-id-186)">Get Youtube subscribers, views and likes</span></p>
+                        <p><a target="_self" href="https://reallysimplesocial.com/tiktok-followers"><span style="color: var(--color-id-186)">Get Tik-Tok Subscribers, views and likes</span></a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block title %}New order{% endblock %}
+
+{% block content %}
+
+<!-- ==================== ANNOUNCEMENT SECTION ==================== -->
+<div id="block_304">
+  <div class="block-bg"></div>
+  <div class="container">
+    <div class="text-block-with-card">
+      <div class="row">
+        <div class="col-12">
+          <div class="component_card_1">
+            <div class="card">
+              <div class="text-block__description">
+                <p>
+                  <strong>UPDATE 06/02/2026</strong> | Known issue with TikTok services not completing tasks. Working on a fix.
+                </p>
+                <p>All pending orders will be eventually completed or refunded.</p>
+                <p>Please create a site ticket for order issues. That's the fastest way to get resolution.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HELP LINKS SECTION ==================== -->
+<div id="block_303">
+  <div class="block-bg"></div>
+  <div class="container">
+    <div class="text-block-with-card">
+      <div class="row">
+        <div class="col-12">
+          <div class="component_card_1">
+            <div class="card">
+              <div class="text-block__description">
+                <p class="text-justify">
+                  <strong>|</strong> 
+                  <a target="_self" href="https://reallysimplesocial.com/how-to-use-reallysimplesocial">
+                    <strong>TUTORIALS TO GET YOU STARTED</strong>
+                  </a>
+                </p>
+                <p class="text-justify">
+                  <strong>|</strong> 
+                  <a target="_self" href="https://reallysimplesocial.com/blog/understanding-our-terms-and-descriptions">
+                    <strong>UNDERSTANDING OUR DESCRIPTIONS</strong>
+                  </a>
+                </p>
+                <p class="text-justify">
+                  <strong>|</strong> 
+                  <a target="_self" href="https://reallysimplesocial.com/blog/understanding-the-status-of-your-order">
+                    <strong>UNDERSTANDING YOUR ORDER STATUS</strong>
+                  </a>
+                </p>
+                <p class="text-justify">
+                  <strong>|</strong> 
+                  <a target="_self" href="https://reallysimplesocial.com/blog/why-is-my-order-not-delivering">
+                    <strong>WHY IS YOUR ORDER NOT DELIVERING</strong>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NEW ORDER FORM SECTION ==================== -->
+<div id="block_247">
+  <div class="block-bg"></div>
+  <div class="container">
+    <div class="new_order-block">
+      <div class="row new-order-form">
+        <div class="col-lg-8">
+          <div class="component_form_group component_card component_radio_button component_platforms">
+            <div class="card">
+              
+              <!-- SERVICE SELECTION FORM (GET) -->
+              <form action="{% url 'pages:new-order' %}" method="get" id="service-selection-form">
+                <div class="component_button_forms">
+                  
+                  <!-- Category Dropdown -->
+                  <div class="form-group">
+                    <label for="orderform-category" class="control-label">Category</label>
+                    <select 
+                      class="form-control" 
+                      id="orderform-category" 
+                      name="category" 
+                      onchange="this.form.submit()">
+                      <option value="">Select a category</option>
+                      {% for category in categories %}
+                      <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>
+                        {{ category.name }}
+                      </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+                  <!-- Service Dropdown -->
+                  {% if request.GET.category and services_for_category %}
+                  <div class="form-group">
+                    <label for="orderform-service" class="control-label">Service</label>
+                    <div class="d-flex">
+                      <div class="w-100 new_order-block__services-list">
+                        <select 
+                          class="form-control" 
+                          id="orderform-service" 
+                          name="service" 
+                          onchange="this.form.submit()">
+                          <option value="">Select a service</option>
+                          {% for service in services_for_category %}
+                          <option value="{{ service.id }}" {% if request.GET.service == service.id|stringformat:"s" %}selected{% endif %}>
+                            {{ service.name }}
+                          </option>
+                          {% endfor %}
+                        </select>
+                        <input type="hidden" name="category" value="{{ request.GET.category }}">
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  
+                </div>
+              </form>
+              
+              <!-- ORDER SUBMISSION FORM (POST) -->
+              {% if service_description and selected_service %}
+              <form action="{% url 'pages:new-order' %}" method="post" id="order-form">
+                {% csrf_token %}
+                <input type="hidden" name="service_id" value="{{ selected_service.id }}">
+                
+                <div class="component_button_forms">
+                  
+                  <!-- Service Description -->
+                  <div class="form-group fields component_service_description">
+                    <label class="control-label">Description</label>
+                    <div class="panel-description">
+                      {{ service_description|safe }}
+                    </div>
+                  </div>
+                  
+                  <!-- Link Field -->
+                  <div class="form-group">
+                    <label for="link" class="control-label">Link <span class="text-danger">*</span></label>
+                    <input 
+                      type="url" 
+                      class="form-control" 
+                      id="link" 
+                      name="link" 
+                      placeholder="Enter your profile/post link"
+                      required>
+                  </div>
+                  
+                  <!-- Quantity Field -->
+                  <div class="form-group">
+                    <label for="quantity" class="control-label">
+                      Quantity <span class="text-danger">*</span>
+                      <small class="text-muted">(Min: {{ selected_service.minimum_order }}, Max: {{ selected_service.maximum_order }})</small>
+                    </label>
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      id="quantity" 
+                      name="quantity" 
+                      min="{{ selected_service.minimum_order }}"
+                      max="{{ selected_service.maximum_order }}"
+                      placeholder="Enter quantity"
+                      required>
+                  </div>
+                  
+                  <!-- Average Time -->
+                  {% if selected_service.average_time %}
+                  <div class="form-group">
+                    <label class="control-label">Average Time</label>
+                    <input type="text" class="form-control" value="{{ selected_service.average_time }}" readonly>
+                  </div>
+                  {% endif %}
+                  
+                  <!-- Charge Display -->
+                  <div class="form-group">
+                    <label class="control-label">Charge</label>
+                    <input type="text" class="form-control" id="charge" value="$0.00" readonly>
+                  </div>
+                  
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="new-order-button-submit component_button_submit">
+                  <button type="submit" class="btn btn-block btn-big-primary">Submit Order</button>
+                </div>
+                
+              </form>
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+
+{% if selected_service %}
+<script>
+  // Calculate charge based on quantity
+  const pricePerThousand = {{ selected_service.price_per_1000 }};
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.getElementById('quantity');
+    const chargeInput = document.getElementById('charge');
+    
+    function updateCharge() {
+      const quantity = parseFloat(quantityInput.value) || 0;
+      const charge = (quantity / 1000) * pricePerThousand;
+      chargeInput.value = '$' + charge.toFixed(2);
+    }
+    
+    quantityInput.addEventListener('input', updateCharge);
+    updateCharge();
+  });
+</script>
+{% endif %}
+
+{% endblock %}

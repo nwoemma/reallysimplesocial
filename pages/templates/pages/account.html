@@ -1,0 +1,439 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block content %}
+<!-- Block 180 - Account Header Totals -->
+<div id="block_180">
+  <div class="block-bg"></div>
+  <div class="container-fluid">
+    <div class="totals ">
+      <div class="row align-items-start justify-content-start">
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-user-circle"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">{{ user.username|default:"emmy3423" }}</h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Account Overview</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-envelope"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">{{ user.email|default:"user@example.com" }}</h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Email Address</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-key"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">••••••••</h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Password Protection</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 mb-2 mt-2">
+          <div class="card h-100"
+            style="background: none; color: inherit; padding-top: 24px; padding-bottom: 24px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-top-width: 0px; box-shadow: 0px 8px 32px 0px var(--color-id-198); border-style: solid;">
+            <div class="totals-block__card">
+              <div class="totals-block__card-left">
+                <div
+                  class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary">
+                  <span class="totals-block__icon style-text-primary fas fa-shield-alt"
+                    style="font-size: 38px; transform: rotate(0deg); text-shadow: none; border-radius: 0px;"></span>
+                </div>
+              </div>
+              <div class="totals-block__card-right">
+                <div class="totals-block__count">
+                  <h2 class="totals-block__count-value style-text-primary">
+                    {% if user.two_factor_enabled %}Enabled{% else %}Disabled{% endif %}
+                  </h2>
+                </div>
+                <div class="totals-block__card-name">
+                  <p>Two-Factor Auth</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 297 - Account Navigation Tabs -->
+<div id="block_297">
+  <div class="block-bg"></div>
+  <div class="container">
+    <div class="text-block-2-columns ">
+      <div class="row">
+        <div class="col-12">
+          <div class="component_tabs account-card">
+            <div class="">
+              <ul class="nav nav-pills tab">
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'pages:account' %}">General</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pages:notifications' %}">Notifications</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 116 - Account Settings Sections -->
+<div id="block_116">
+  <div class="block-bg"></div>
+  <div class="container-fluid">
+    <div class="orders-history ">
+      
+      <!-- Account Information Section -->
+      <div class="row">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <h3 class="mb-4">Account Information</h3>
+                  
+                  <div class="form-group mb-4">
+                    <label class="control-label">Username</label>
+                    <input type="text" class="form-control" value="{{ user.username|default:'emmy3423' }}" disabled>
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="control-label">Email</label>
+                    <div class="d-flex align-items-center">
+                      <input type="email" class="form-control me-2" value="{{ user.email|default:'user@example.com' }}" readonly style="margin-right: 10px;">
+                      <button class="btn btn-big-primary" id="changeEmailLink" style="white-space: nowrap;">Change email</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language Settings Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label class="control-label">Language</label>
+                      <div class="d-flex">
+                        <div class="w-100" style="margin-right: 10px;">
+                          <select class="form-control" id="language" name="language">
+                            <option value="en" selected>English</option>
+                          </select>
+                        </div>
+                        <div class="account-button-right">
+                          <button type="submit" class="btn btn-big-primary">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Change Password Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <h3 class="mb-4">Change Password</h3>
+                  <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                      <label class="control-label">Current password</label>
+                      <input type="password" class="form-control" id="current" name="current_password">
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="control-label">New password</label>
+                      <input type="password" class="form-control" id="new" name="new_password">
+                    </div>
+                    <div class="form-group mb-4">
+                      <label class="control-label">Confirm new password</label>
+                      <input type="password" class="form-control" id="confirm" name="confirm_password">
+                    </div>
+                    <div class="component_button_save">
+                      <button type="submit" class="btn btn-big-primary">Change password</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-Factor Authentication Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <div id="2fa-approve-error-block"
+                       style="display: none;"
+                       class="alert alert-dismissible alert-danger mb-3">
+                    <button type="button" class="close">&times;</button>
+                    <span id="2fa-error-text"></span>
+                  </div>
+
+                  <h3 class="mb-3">Two-Factor Authentication</h3>
+                  <p class="mb-4">Email-based option to add an extra layer of protection to your account. When signing in you'll need to enter a code that will be sent to your email address.</p>
+
+                  <!-- 2FA Form generate code -->
+                  <form id="2fa-generate-form"
+                        method="post"
+                        action="{% url 'pages:2fa_generate' %}"
+                        style="display: block;">
+                    {% csrf_token %}
+                    <input type="hidden" name="enabled" value="1">
+                    <div class="component_button_save">
+                      <button id="2fa-generate" type="submit" class="btn btn-big-primary">
+                        {% if user.two_factor_enabled %}Disable{% else %}Enable{% endif %}
+                      </button>
+                    </div>
+                  </form>
+
+                  <!-- 2FA Form approve code -->
+                  <form id="2fa-approve-form"
+                        method="post"
+                        action="{% url 'pages:2fa_approve' %}"
+                        style="display: none;">
+                    {% csrf_token %}
+                    <div class="mb-3">Please check your email and enter the code below.</div>
+                    <div class="form-group mb-3">
+                      <label for="code" class="control-label">Code</label>
+                      <input type="text" id="code" name="code" class="form-control">
+                    </div>
+                    <input type="hidden" name="enabled" value="1">
+                    <div class="component_button_save">
+                      <button id="2fa-approve" type="submit" class="btn btn-big-primary">Verify & Enable</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timezone Settings Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label class="control-label">Timezone</label>
+                      <div class="d-flex">
+                        <div class="w-100" style="margin-right: 10px;">
+                          <select name="timezone" id="timezone" class="form-control">
+                            <option value="0">(UTC) Greenwich Mean Time, Western European Time</option>
+                            <option value="3600" selected>(UTC +1:00) Central European Time, West Africa Time</option>
+                            <option value="7200">(UTC +2:00) Central Africa Time, Eastern European Time</option>
+                            <option value="10800">(UTC +3:00) Moscow Time, East Africa Time</option>
+                          </select>
+                        </div>
+                        <div class="account-button-right">
+                          <button type="submit" class="btn btn-big-primary">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Key Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="orders-history__margin-search component_card">
+            <div class="card">
+              <div class="component_form_group">
+                <div class="p-4">
+                  <div class="alert alert-dismissible alert-danger mr-2 mb-3" style="display: none;">
+                    <button type="button" class="close">&times;</button>
+                    <span></span>
+                  </div>
+                  <form action="{% url 'pages:generate_api_key' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label class="control-label">API Key</label>
+                      <div class="d-flex align-items-center">
+                        <div style="margin-right: 10px;">
+                          <input type="text" class="form-control" value="••••••••••••••••" readonly disabled style="width: 300px;">
+                        </div>
+                        <div class="component_button_save">
+                          <button type="submit" class="btn btn-big-primary">Generate New</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Email Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="changeEmailModal" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <form id="changeEmailForm" class="modal-content" method="post" action="{% url 'pages:change_email' %}">
+      {% csrf_token %}
+      <div class="modal-header">
+        <h4 class="modal-title">Change email</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body component_form_group">
+        <div id="changeEmailError" class="error-summary alert alert-dismissible alert-danger mb-3 hidden"></div>
+        <div class="form-group mb-3">
+          <label for="current-email">Current email</label>
+          <input type="email" class="form-control" value="{{ user.email|default:'user@example.com' }}" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="new-email">New email</label>
+          <input type="email" class="form-control" id="new-email" name="new_email">
+        </div>
+        <div class="form-group mb-3">
+          <label for="current-password">Current password</label>
+          <input type="password" class="form-control" id="current-password" name="password">
+        </div>
+      </div>
+      <div class="modal-footer component_button_save">
+        <button type="button" class="btn btn-big-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-big-primary" id="changeEmailSubmitBtn">Change email</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }}
+<script type="text/javascript">
+  window.modules.layouts = {
+    "theme_id": 21,
+    "auth": 1,
+    "live": true,
+    "csrftoken": "{{ csrf_token }}"
+  };
+</script>
+<script type="text/javascript">
+  window.modules.siteSettings = {
+    "title": "The key is hidden for security reasons"
+  };
+</script>
+<script type="text/javascript">
+  window.modules.changeEmail = {
+    "csrf_param": "_csrf",
+    "csrf": "{{ csrf_token }}",
+    "change_email_url": "{% url 'pages:change_email' %}"
+  };
+</script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Change email modal trigger
+    const changeEmailLink = document.getElementById('changeEmailLink');
+    const changeEmailModal = document.getElementById('changeEmailModal');
+    
+    if (changeEmailLink && changeEmailModal) {
+      changeEmailLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        $('#changeEmailModal').modal('show');
+      });
+    }
+    
+    // 2FA form toggle logic (simplified - implement based on your backend)
+    const twoFactorEnabled = {% if user.two_factor_enabled %}true{% else %}false{% endif %};
+    const generateForm = document.getElementById('2fa-generate-form');
+    const approveForm = document.getElementById('2fa-approve-form');
+    
+    if (generateForm && approveForm) {
+      // Your 2FA logic here based on server response
+    }
+  });
+</script>
+<script type="text/javascript">
+  window.modules.user_app_show_config = [];
+</script>
+<script type="text/javascript">
+  window.modules.alerts = { "alerts": [] };
+</script>
+{% endblock %}

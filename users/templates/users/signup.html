@@ -1,0 +1,167 @@
+{% extends  "base.html" %}
+{% block content %}
+        <!-- Main Content -->
+        <div class="wrapper-content">
+            <div class="wrapper-content__header"></div>
+            
+            <div class="wrapper-content__body">
+                
+                <!-- Header Section -->
+                <div id="block_174">
+                    <div class="block-bg"></div>
+                    <div class="container">
+                        <div class="header-with-text">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-block__title">
+                                        <h1 class="text-center">sign up to get started</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-block__description">
+                                        <p class="text-center">
+                                            <span>Choose a username and quickly set up your account with your email</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Signup Form Section -->
+                <div id="block_146">
+                    <div class="block-bg"></div>
+                    <div class="container">
+                        <div class="sign-in">
+                            <div class="row sign-up-center-alignment">
+                                <div class="col-lg-8">
+                                    <div class="component_card">
+                                        <div class="card">
+                                            <form action="" method="post">
+                                                {% csrf_token %}
+                                                <!-- Form Fields -->
+                                                <div>
+                                                    <!-- Username Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="login" class="control-label">Username</label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="login" 
+                                                                   value="" 
+                                                                   name="username" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Email Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="email" class="control-label">Email</label>
+                                                            <input type="email" 
+                                                                   class="form-control" 
+                                                                   id="email" 
+                                                                   value="" 
+                                                                   name="email" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Phone Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="phone" class="control-label">Phone</label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="phone" 
+                                                                   value="" 
+                                                                   name="phone" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- First Name Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="first_name" class="control-label">First name</label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="first_name" 
+                                                                   value="" 
+                                                                   name="first_name" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Last Name Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="last_name" class="control-label">Last name</label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="last_name" 
+                                                                   value="" 
+                                                                   name="last_name" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Password Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="password" class="control-label">Password</label>
+                                                            <input type="password" 
+                                                                   class="form-control" 
+                                                                   id="password" 
+                                                                   value="" 
+                                                                   name="password" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Confirm Password Field -->
+                                                    <div class="component_form_group">
+                                                        <div class="form-group">
+                                                            <label for="password2" class="control-label">Confirm password</label>
+                                                            <input type="password2" 
+                                                                   class="form-control" 
+                                                                   id="password2" 
+                                                                   value="" 
+                                                                   name="password2" 
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- CSRF Token -->
+                                                <input type="hidden" 
+                                                       name="_csrf" 
+                                                       value="H1RG9FTYQprS4QhImRhOSudMuU7mt8Bhd2lUFZSKYC9RJiKnLO4D9p_URjroYR0eonjqGLTNpykRImdN998ISQ==">
+                                                
+                                                <!-- Submit Button -->
+                                                <div class="component_button_submit">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-block btn-big-primary">
+                                                            Sign up
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Sign In Link -->
+                                                <div class="text-center">
+                                                    Already have an account? 
+                                                    <a href="/" class="sign-up-center-signin-link">Sign in</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
