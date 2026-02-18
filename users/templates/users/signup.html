@@ -1,4 +1,4 @@
-{% extends  "base.html" %}
+{% extends "base.html" %}
 {% block content %}
         <!-- Main Content -->
         <div class="wrapper-content">
@@ -40,106 +40,146 @@
                                 <div class="col-lg-8">
                                     <div class="component_card">
                                         <div class="card">
-                                            <form action="" method="post">
+                                            <!-- Display Non-Field Errors -->
+                                            {% if form.non_field_errors %}
+                                            <div class="alert alert-danger">
+                                                {% for error in form.non_field_errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            
+                                            <!-- Display General Error Message -->
+                                            {% if error %}
+                                            <div class="alert alert-danger">
+                                                <strong>Please correct the errors below:</strong>
+                                            </div>
+                                            {% endif %}
+
+                                            <form action="" method="post" novalidate>
                                                 {% csrf_token %}
-                                                <!-- Form Fields -->
-                                                <div>
-                                                    <!-- Username Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="login" class="control-label">Username</label>
-                                                            <input type="text" 
-                                                                   class="form-control" 
-                                                                   id="login" 
-                                                                   value="" 
-                                                                   name="username" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Email Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="email" class="control-label">Email</label>
-                                                            <input type="email" 
-                                                                   class="form-control" 
-                                                                   id="email" 
-                                                                   value="" 
-                                                                   name="email" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Phone Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="phone" class="control-label">Phone</label>
-                                                            <input type="text" 
-                                                                   class="form-control" 
-                                                                   id="phone" 
-                                                                   value="" 
-                                                                   name="phone" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- First Name Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="first_name" class="control-label">First name</label>
-                                                            <input type="text" 
-                                                                   class="form-control" 
-                                                                   id="first_name" 
-                                                                   value="" 
-                                                                   name="first_name" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Last Name Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="last_name" class="control-label">Last name</label>
-                                                            <input type="text" 
-                                                                   class="form-control" 
-                                                                   id="last_name" 
-                                                                   value="" 
-                                                                   name="last_name" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Password Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="password" class="control-label">Password</label>
-                                                            <input type="password" 
-                                                                   class="form-control" 
-                                                                   id="password" 
-                                                                   value="" 
-                                                                   name="password" 
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Confirm Password Field -->
-                                                    <div class="component_form_group">
-                                                        <div class="form-group">
-                                                            <label for="password2" class="control-label">Confirm password</label>
-                                                            <input type="password2" 
-                                                                   class="form-control" 
-                                                                   id="password2" 
-                                                                   value="" 
-                                                                   name="password2" 
-                                                                   required>
-                                                        </div>
+                                                
+                                                <!-- Username Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.username.id_for_label }}" class="control-label">Username</label>
+                                                        {{ form.username }}
+                                                        {% if form.username.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.username.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <small class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
-
-                                                <!-- CSRF Token -->
-                                                <input type="hidden" 
-                                                       name="_csrf" 
-                                                       value="H1RG9FTYQprS4QhImRhOSudMuU7mt8Bhd2lUFZSKYC9RJiKnLO4D9p_URjroYR0eonjqGLTNpykRImdN998ISQ==">
+                                                
+                                                <!-- Email Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.email.id_for_label }}" class="control-label">Email</label>
+                                                        {{ form.email }}
+                                                        {% if form.email.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.email.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <small class="form-text text-muted">Enter a valid email address.</small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Phone Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.phone.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.phone.id_for_label }}" class="control-label">Phone</label>
+                                                        {{ form.phone }}
+                                                        {% if form.phone.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.phone.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <small class="form-text text-muted">Enter your phone number.</small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- First Name Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.first_name.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.first_name.id_for_label }}" class="control-label">First name</label>
+                                                        {{ form.first_name }}
+                                                        {% if form.first_name.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.first_name.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Last Name Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.last_name.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.last_name.id_for_label }}" class="control-label">Last name</label>
+                                                        {{ form.last_name }}
+                                                        {% if form.last_name.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.last_name.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Password Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.password1.id_for_label }}" class="control-label">Password</label>
+                                                        {{ form.password1 }}
+                                                        {% if form.password1.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.password1.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <small class="form-text text-muted">
+                                                                <ul class="list-unstyled">
+                                                                    <li><i class="fas fa-info-circle"></i> Your password can't be too similar to your other personal information.</li>
+                                                                    <li><i class="fas fa-info-circle"></i> Your password must contain at least 8 characters.</li>
+                                                                    <li><i class="fas fa-info-circle"></i> Your password can't be a commonly used password.</li>
+                                                                    <li><i class="fas fa-info-circle"></i> Your password can't be entirely numeric.</li>
+                                                                </ul>
+                                                            </small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Confirm Password Field -->
+                                                <div class="component_form_group">
+                                                    <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+                                                        <label for="{{ form.password2.id_for_label }}" class="control-label">Confirm password</label>
+                                                        {{ form.password2 }}
+                                                        {% if form.password2.errors %}
+                                                            <div class="text-danger">
+                                                                {% for error in form.password2.errors %}
+                                                                    <small><i class="fas fa-exclamation-circle"></i> {{ error }}</small>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <small class="form-text text-muted">Enter the same password as before, for verification.</small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
                                                 
                                                 <!-- Submit Button -->
                                                 <div class="component_button_submit">
@@ -153,7 +193,7 @@
                                                 <!-- Sign In Link -->
                                                 <div class="text-center">
                                                     Already have an account? 
-                                                    <a href="/" class="sign-up-center-signin-link">Sign in</a>
+                                                    <a href="{% url 'users:signin' %}" class="sign-up-center-signin-link">Sign in</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -164,4 +204,58 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <style>
+            .has-error .form-control {
+                border-color: #dc3545;
+                box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            }
+            
+            .has-error .control-label {
+                color: #dc3545;
+            }
+            
+            .text-danger {
+                color: #dc3545;
+                font-size: 0.875rem;
+                margin-top: 0.25rem;
+            }
+            
+            .text-danger i {
+                margin-right: 0.25rem;
+            }
+            
+            .alert {
+                padding: 0.75rem 1.25rem;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: 0.25rem;
+            }
+            
+            .alert-danger {
+                color: #721c24;
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+            }
+            
+            .form-text {
+                font-size: 0.875rem;
+                margin-top: 0.25rem;
+            }
+            
+            .list-unstyled {
+                padding-left: 0;
+                list-style: none;
+                margin-bottom: 0.5rem;
+            }
+            
+            .list-unstyled li {
+                margin-bottom: 0.25rem;
+            }
+            
+            .fas {
+                font-size: 0.875rem;
+            }
+        </style>
 {% endblock %}
