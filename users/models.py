@@ -50,8 +50,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     """Extended user model with SMM-specific fields"""
-    username = models.CharField(null=True, blank=True,max_length=15)
-    email = models.EmailField(unique=True,null=True, blank=True)
+    username = models.CharField(unique=True,max_length=15)
+    email = models.EmailField(unique=True)
     phone = models.CharField(null=True,blank=True, max_length=11 )
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total_spent = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
