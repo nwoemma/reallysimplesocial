@@ -50,9 +50,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     """Extended user model with SMM-specific fields"""
-    username = models.CharField(null=True, blank=True)
+    username = models.CharField(null=True, blank=True,max_length=15)
     email = models.EmailField(unique=True,null=True, blank=True)
-    phone = models.CharField(null=True,blank=True )
+    phone = models.CharField(null=True,blank=True, max_length=11 )
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total_spent = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total_orders = models.IntegerField(default=0)
@@ -277,7 +277,7 @@ class Order(models.Model):
     order_id = models.CharField(max_length=50, unique=True, default=uuid.uuid4)
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='orders')
     service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='orders')
-    description = models.CharField(null=True, blank=True)
+    description = models.CharField(null=True, blank=True,max_length=90)
     # Order details
     link = models.URLField(max_length=500, help_text="Social media post/profile link")
     quantity = models.PositiveIntegerField()
