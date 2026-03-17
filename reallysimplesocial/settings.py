@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-ex%$6+_s=sqf2_3t_j9+li*wbsbj8s7_jw)5=y4kfb)hv1@0bb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["nwoemma.pythonanywhere.com"]
+ALLOWED_HOSTS = ["nwoemma.pythonanywhere.com",'127.0.0.1']
 
 
 # Application definition
@@ -82,22 +82,22 @@ WSGI_APPLICATION = 'reallysimplesocial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nwoemma$reallysimplesocial',
-        'USER': 'nwoemma',
-        'PASSWORD': 'Emmy77@@',
-        'HOST': 'nwoemma.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'nwoemma$reallysimplesocial',
+#         'USER': 'nwoemma',
+#         'PASSWORD': 'Emmy77@@',
+#         'HOST': 'nwoemma.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -133,7 +133,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 SESSION_COOKIE_AGE = 86400  # 24 hours (in seconds)
 SESSION_SAVE_EVERY_REQUEST = True  # Refresh session on every request
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Don't expire when browser closes
@@ -149,7 +152,10 @@ import secrets
 CDN_SECRET_KEY = secrets.token_urlsafe(32)
 
 
-
+CSRF_COOKIE_SECURE = False  # Set to True only in production with HTTPS
+CSRF_COOKIE_HTTPONLY = False  # Set to False to allow JavaScript access
+CSRF_USE_SESSIONS = False  # Store CSRF token in cookie instead of session
+CSRF_COOKIE_SAMESITE = 'Lax'  # or 'Strict' in production
 # Add these settings to your settings.py file
 
 # Support/Email settings

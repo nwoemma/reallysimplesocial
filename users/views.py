@@ -28,34 +28,24 @@ def signin(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        
-        context = {
-            'username_error': '',
-            'password_error': ''
-        }
-        
         if not username or not password:
-            if not username:
-                context['username_error'] = 'Username is required'
-            if not password:
-                context['password_error'] = 'Password is required'
-            return render(request, 'users/signin.html', context)
-            
+            print('no username or password')
+            messages.error(request, 'Username and Password is required')
+            return render(request, 'users/signin.html')
         try:
             user = User.objects.get(username=username)
             if user.check_password(password):
                 login(request, user)
+                print('login suceessfully')
                 messages.success(request, 'Login Successful')
                 return redirect('pages:new-order')
             else:
-                context['password_error'] = 'Invalid password'
-                return render(request, 'users/signin.html', context)
+                messages.error(request, 'User is not unauthorized check your username and password')
+                return render(request, 'users/sigin.html')
         except User.DoesNotExist:
-            context['username_error'] = 'User with this username does not exist'
-            return render(request, 'users/signin.html', context)
-            
+            messages.error(request, 'The User with this email does not exist')
+            return render(request, 'users/signin.html')
     return render(request, 'users/signin.html')
-
 
 def signout(request):
     logout(request)

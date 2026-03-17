@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="wrapper-content">
+    <div class="wrapper-content__body">
+        <div id="block_error">
+            <div class="block-bg"></div>
+            <div class="container">
+                <div class="error-page">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="component_card">
+                                <div class="card text-center p-5">
+                                    <div class="error-icon mb-4">
+                                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="10" stroke="#ffc107" stroke-width="1.5"/>
+                                            <path d="M12 8V12" stroke="#ffc107" stroke-width="1.5" stroke-linecap="round"/>
+                                            <path d="M12 16H12.01" stroke="#ffc107" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    
+                                    <h1 class="error-title" style="font-size: 96px; color: #ffc107; margin-bottom: 0;">400</h1>
+                                    <h2 class="error-subtitle" style="font-size: 32px; margin-bottom: 20px;">Bad Request</h2>
+                                    
+                                    <div class="error-message mb-4">
+                                        <p class="lead" style="font-size: 18px;">
+                                            The request could not be processed.
+                                        </p>
+                                        <p style="color: #666;">
+                                            Please check your input and try again.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="error-actions">
+                                        <a href="javascript:history.back()" class="btn btn-primary btn-lg" style="margin-right: 10px;">
+                                            Go Back
+                                        </a>
+                                        <a href="/" class="btn btn-secondary btn-lg">Homepage</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
