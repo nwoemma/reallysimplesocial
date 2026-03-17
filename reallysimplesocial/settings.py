@@ -30,7 +30,7 @@ SMM_API_URL = os.getenv('SMM_API_URL')
 SECRET_KEY = 'django-insecure-ex%$6+_s=sqf2_3t_j9+li*wbsbj8s7_jw)5=y4kfb)hv1@0bb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["nwoemma.pythonanywhere.com",'127.0.0.1']
 
@@ -135,7 +135,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'reallysimplesocial/static')]
 
 SESSION_COOKIE_AGE = 86400  # 24 hours (in seconds)
 SESSION_SAVE_EVERY_REQUEST = True  # Refresh session on every request
